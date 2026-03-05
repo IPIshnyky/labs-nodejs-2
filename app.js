@@ -12,11 +12,20 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(import.meta.dirname, 'views'));
 
+app.get('/', (req, res) => res.render('index', { page: 'home' }));
+
 app.get('/faq', (req, res) => {
   const data = {
     faq: FAQ,
   };
-  res.render('faq', data);
+  res.render('faq', { page: 'faq', data });
+});
+
+app.get('/team', (req, res) => {
+  const students = [
+    { name: 'string', avatar: 'link', role: 'string' },
+  ];
+  res.render('team',{ page: 'team', students });
 });
 
 const PORT = process.env.PORT || 3000;
