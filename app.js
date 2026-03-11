@@ -9,6 +9,7 @@ const app = express();
 app.use('/fonts/geist', express.static('node_modules/geist/dist/fonts'));
 app.use(morgan('dev'));
 app.use(express.static('public'));
+app.use('/img', express.static('img'));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(import.meta.dirname, 'views'));
