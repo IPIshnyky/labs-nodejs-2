@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
-import FAQ from "./data/faq.json" with { type: "json" };
+import faq from "./data/faq.json" with { type: "json" };
 import students from "./data/members.json" with { type: "json" };
 
 const app = express();
@@ -17,10 +17,7 @@ app.set("views", path.join(import.meta.dirname, "views"));
 app.get("/", (req, res) => res.render("index", { page: "home" }));
 
 app.get("/faq", (req, res) => {
-  const data = {
-    faq: FAQ,
-  };
-  res.render("faq", { page: "faq", data });
+  res.render("faq", { page: "faq", faq });
 });
 
 app.get("/team", (req, res) => {
